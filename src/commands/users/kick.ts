@@ -37,15 +37,15 @@ const command: ICommand = {
     assert(interaction.isChatInputCommand());
     assert(interaction.guild);
 
-    const user = interaction.options.getUser("member")!;
+    const member = interaction.options.getUser("member")!;
     const reason =
       interaction.options.getString("reason") ?? "No reason provided.";
 
     try {
-      await interaction.guild.members.kick(user, reason);
+      await interaction.guild.members.kick(member, reason);
 
       await interaction.reply({
-        content: `User ${user.tag} successfully kicked for reason: ${reason}`,
+        content: `User ${member.tag} successfully kicked for reason: ${reason}`,
         ephemeral: true,
       });
     } catch (e: any) {

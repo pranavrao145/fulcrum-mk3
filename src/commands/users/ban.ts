@@ -49,20 +49,20 @@ const command: ICommand = {
     assert(interaction.isChatInputCommand());
     assert(interaction.guild);
 
-    const user = interaction.options.getUser("member")!;
+    const member = interaction.options.getUser("member")!;
     const deleteMessageSeconds =
       interaction.options.getInteger("seconds") ?? undefined;
     const reason =
       interaction.options.getString("reason") ?? "No reason provided.";
 
     try {
-      await interaction.guild.members.ban(user, {
+      await interaction.guild.members.ban(member, {
         reason: reason,
         deleteMessageSeconds: deleteMessageSeconds,
       });
 
       await interaction.reply({
-        content: `User ${user.tag} successfully banned for reason: ${reason}`,
+        content: `User ${member.tag} successfully banned for reason: ${reason}`,
         ephemeral: true,
       });
     } catch (e: any) {
