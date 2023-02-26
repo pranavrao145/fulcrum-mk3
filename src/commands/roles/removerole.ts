@@ -14,14 +14,14 @@ import { handleError } from "../../utils/helpers";
 import { ICommand } from "../../utils/types";
 
 const command: ICommand = {
-  name: "assignrole",
+  name: "removerole",
   command: new SlashCommandBuilder()
-    .setName("assignrole")
-    .setDescription("Assigns the given role to the given user(s).")
+    .setName("removerole")
+    .setDescription("Remove the given role from the given user(s).")
     .addRoleOption((option: SlashCommandRoleOption) => {
       option
         .setName("role")
-        .setDescription("The role to assign")
+        .setDescription("The role to remove")
         .setRequired(true);
 
       return option;
@@ -29,7 +29,7 @@ const command: ICommand = {
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member1")
-        .setDescription("A member to which the given role should be assigned")
+        .setDescription("A member from which the given role should be removed")
         .setRequired(true);
 
       return option;
@@ -37,63 +37,63 @@ const command: ICommand = {
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member2")
-        .setDescription("A member to which the given role should be assigned");
+        .setDescription("A member from which the given role should be removed");
 
       return option;
     })
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member3")
-        .setDescription("A member to which the given role should be assigned");
+        .setDescription("A member from which the given role should be removed");
 
       return option;
     })
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member4")
-        .setDescription("A member to which the given role should be assigned");
+        .setDescription("A member from which the given role should be removed");
 
       return option;
     })
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member5")
-        .setDescription("A member to which the given role should be assigned");
+        .setDescription("A member from which the given role should be removed");
 
       return option;
     })
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member6")
-        .setDescription("A member to which the given role should be assigned");
+        .setDescription("A member from which the given role should be removed");
 
       return option;
     })
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member7")
-        .setDescription("A member to which the given role should be assigned");
+        .setDescription("A member from which the given role should be removed");
 
       return option;
     })
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member8")
-        .setDescription("A member to which the given role should be assigned");
+        .setDescription("A member from which the given role should be removed");
 
       return option;
     })
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member9")
-        .setDescription("A member to which the given role should be assigned");
+        .setDescription("A member from which the given role should be removed");
 
       return option;
     })
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member10")
-        .setDescription("A member to which the given role should be assigned");
+        .setDescription("A member from which the given role should be removed");
 
       return option;
     })
@@ -121,7 +121,10 @@ const command: ICommand = {
     for (let index = 0; index < members.length; index++) {
       const member = members[index];
       try {
-        await interaction.guild.members.addRole({ role: role, user: member });
+        await interaction.guild.members.removeRole({
+          role: role,
+          user: member,
+        });
         reportText += `${member.tag}: Success\n`;
       } catch (e: any) {
         reportText += `${member.tag}: Failure\n`;
@@ -131,9 +134,9 @@ const command: ICommand = {
 
     const resultEmbed = new EmbedBuilder()
       .setColor("#ffffff")
-      .setTitle("Assign Role - Report")
+      .setTitle("Remove Role - Report")
       .setDescription(
-        "Report of attempt to assign the given role to the given members."
+        "Report of attempt to remove the given role from the given members."
       )
       .addFields({ name: "Members Affected", value: reportText });
 
