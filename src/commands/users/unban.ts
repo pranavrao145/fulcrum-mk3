@@ -49,7 +49,7 @@ const command: ICommand = {
           ephemeral: true,
         });
       } else {
-        throw Error("Could not find user to unban by ID.");
+        throw Error("Could not find user to unban by ID provided.");
       }
     } catch (e: any) {
       handleError(interaction, e);

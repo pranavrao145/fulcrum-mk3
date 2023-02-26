@@ -18,3 +18,7 @@ export async function handleError(
 
   console.error(err);
 }
+
+export function isValidColor(colour: string) {
+  return /^#([0-9A-F]{3}){1,2}$/i.test(colour);
+}
