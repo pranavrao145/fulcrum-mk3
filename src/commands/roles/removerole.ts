@@ -21,7 +21,7 @@ const command: ICommand = {
     .addRoleOption((option: SlashCommandRoleOption) => {
       option
         .setName("role")
-        .setDescription("The role to remove")
+        .setDescription("The role to remove from the given user(s)")
         .setRequired(true);
 
       return option;
@@ -103,7 +103,9 @@ const command: ICommand = {
     assert(interaction.isChatInputCommand());
     assert(interaction.guild);
 
-    const role = interaction.options.getRole("role")!.id;
+    const roleId = interaction.options.getRole("role")!.id;
+    const roleResolved = interaction.guild.roles.resolve(roleId)!;
+
     const members: Array<User> = [];
 
     for (let index = 1; index < 11; index++) {
@@ -111,8 +113,6 @@ const command: ICommand = {
 
       if (member) {
         members.push(member);
-      } else {
-        break;
       }
     }
 
@@ -122,13 +122,12 @@ const command: ICommand = {
       const member = members[index];
       try {
         await interaction.guild.members.removeRole({
-          role: role,
+          role: roleResolved,
           user: member,
         });
         reportText += `${member.tag}: Success\n`;
       } catch (e: any) {
         reportText += `${member.tag}: Failure\n`;
-        handleError(interaction, e);
       }
     }
 
@@ -136,7 +135,7 @@ const command: ICommand = {
       .setColor("#ffffff")
       .setTitle("Remove Role - Report")
       .setDescription(
-        "Report of attempt to remove the given role from the given members."
+        `Report of attempt to remove the given role (${roleResolved.name}) from the given members.`
       )
       .addFields({ name: "Members Affected", value: reportText });
 

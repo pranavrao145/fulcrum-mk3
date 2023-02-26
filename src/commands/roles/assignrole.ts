@@ -21,7 +21,7 @@ const command: ICommand = {
     .addRoleOption((option: SlashCommandRoleOption) => {
       option
         .setName("role")
-        .setDescription("The role to assign")
+        .setDescription("The role to assign to the given user(s)")
         .setRequired(true);
 
       return option;
@@ -103,7 +103,9 @@ const command: ICommand = {
     assert(interaction.isChatInputCommand());
     assert(interaction.guild);
 
-    const role = interaction.options.getRole("role")!.id;
+    const roleId = interaction.options.getRole("role")!.id;
+    const roleResolved = interaction.guild.roles.resolve(roleId)!;
+
     const members: Array<User> = [];
 
     for (let index = 1; index < 11; index++) {
@@ -111,8 +113,6 @@ const command: ICommand = {
 
       if (member) {
         members.push(member);
-      } else {
-        break;
       }
     }
 
@@ -121,11 +121,13 @@ const command: ICommand = {
     for (let index = 0; index < members.length; index++) {
       const member = members[index];
       try {
-        await interaction.guild.members.addRole({ role: role, user: member });
+        await interaction.guild.members.addRole({
+          role: roleResolved,
+          user: member,
+        });
         reportText += `${member.tag}: Success\n`;
       } catch (e: any) {
         reportText += `${member.tag}: Failure\n`;
-        handleError(interaction, e);
       }
     }
 
@@ -133,7 +135,7 @@ const command: ICommand = {
       .setColor("#ffffff")
       .setTitle("Assign Role - Report")
       .setDescription(
-        "Report of attempt to assign the given role to the given members."
+        `Report of attempt to assign the given role (${roleResolved.name}) to the given members.`
       )
       .addFields({ name: "Members Affected", value: reportText });
 

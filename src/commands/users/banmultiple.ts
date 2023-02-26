@@ -83,8 +83,6 @@ const command: ICommand = {
 
       if (member) {
         members.push(member);
-      } else {
-        break;
       }
     }
 
