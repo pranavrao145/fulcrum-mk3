@@ -20,7 +20,7 @@ const command: ICommand = {
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member")
-        .setDescription("The member to ban.")
+        .setDescription("The member to ban")
         .setRequired(true);
 
       return option;
@@ -29,7 +29,7 @@ const command: ICommand = {
       option
         .setName("seconds")
         .setDescription(
-          "Number of seconds of messages to delete, must be between 0 and 604800 (7 days), inclusive."
+          "Number of seconds of messages to delete, must be between 0 and 604800 (7 days), inclusive"
         )
         .setMinValue(0)
         .setMaxValue(604800);

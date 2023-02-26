@@ -5,20 +5,21 @@ import {
   PermissionFlagsBits,
   SlashCommandBuilder,
   SlashCommandStringOption,
+  SlashCommandUserOption,
 } from "discord.js";
 import { handleError } from "../../utils/helpers";
 
 import { ICommand } from "../../utils/types";
 
 const command: ICommand = {
-  name: "unban",
+  name: "kick",
   command: new SlashCommandBuilder()
-    .setName("unban")
-    .setDescription("Unbans the given user from the server.")
-    .addStringOption((option: SlashCommandStringOption) => {
+    .setName("kick")
+    .setDescription("Kicks the given member from the server.")
+    .addUserOption((option: SlashCommandUserOption) => {
       option
-        .setName("user")
-        .setDescription("The ID of the user to unban")
+        .setName("member")
+        .setDescription("The member to kick")
         .setRequired(true);
 
       return option;
@@ -26,31 +27,27 @@ const command: ICommand = {
     .addStringOption((option: SlashCommandStringOption) => {
       option
         .setName("reason")
-        .setDescription("The reason for to unban")
+        .setDescription("The reason for the kick")
         .setMaxLength(512);
       return option;
     })
-    .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
+    .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
 
   execute: async function (interaction: Interaction<CacheType>) {
     assert(interaction.isChatInputCommand());
     assert(interaction.guild);
 
-    const userId = interaction.options.getString("user")!;
+    const user = interaction.options.getUser("member")!;
     const reason =
       interaction.options.getString("reason") ?? "No reason provided.";
 
     try {
-      const user = await interaction.guild.members.unban(userId, reason);
+      await interaction.guild.members.kick(user, reason);
 
-      if (user) {
-        await interaction.reply({
-          content: `User ${user.tag} successfully unbanned for reason: ${reason}`,
-          ephemeral: true,
-        });
-      } else {
-        throw Error("Could not find user to unban by ID.");
-      }
+      await interaction.reply({
+        content: `User ${user.tag} successfully kicked for reason: ${reason}`,
+        ephemeral: true,
+      });
     } catch (e: any) {
       handleError(interaction, e);
     }
