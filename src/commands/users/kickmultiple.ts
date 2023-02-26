@@ -104,8 +104,8 @@ const command: ICommand = {
     const resultEmbed = new EmbedBuilder()
       .setColor("#ffffff")
       .setTitle("Kick Multiple - Report")
-      .setDescription("Report of attempt to kick multiple members.")
-      .addFields({ name: "Members Kicked", value: reportText });
+      .setDescription("Report of attempt to kick the given members.")
+      .addFields({ name: "Members Affected", value: reportText });
 
     try {
       await interaction.reply({ embeds: [resultEmbed], ephemeral: true });

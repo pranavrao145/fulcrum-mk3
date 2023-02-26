@@ -5,77 +5,105 @@ import {
   Interaction,
   PermissionFlagsBits,
   SlashCommandBuilder,
+  SlashCommandRoleOption,
   SlashCommandUserOption,
   User,
 } from "discord.js";
-
 import { handleError } from "../../utils/helpers";
+
 import { ICommand } from "../../utils/types";
 
 const command: ICommand = {
-  name: "banmultiple",
+  name: "assignrole",
   command: new SlashCommandBuilder()
-    .setName("banmultiple")
-    .setDescription("Bans up to 10 given users from the server.")
-    .addUserOption((option: SlashCommandUserOption) => {
+    .setName("assignrole")
+    .setDescription("Assigns the given role to the given user(s).")
+    .addRoleOption((option: SlashCommandRoleOption) => {
       option
-        .setName("member1")
-        .setDescription("A member to ban")
+        .setName("role")
+        .setDescription("The role to assign")
         .setRequired(true);
 
       return option;
     })
     .addUserOption((option: SlashCommandUserOption) => {
-      option.setName("member2").setDescription("A member to ban");
+      option
+        .setName("member1")
+        .setDescription("A member to which the role should be assigned")
+        .setRequired(true);
 
       return option;
     })
     .addUserOption((option: SlashCommandUserOption) => {
-      option.setName("member3").setDescription("A member to ban");
+      option
+        .setName("member2")
+        .setDescription("A member to which the role should be assigned");
 
       return option;
     })
     .addUserOption((option: SlashCommandUserOption) => {
-      option.setName("member4").setDescription("A member to ban");
+      option
+        .setName("member3")
+        .setDescription("A member to which the role should be assigned");
 
       return option;
     })
     .addUserOption((option: SlashCommandUserOption) => {
-      option.setName("member5").setDescription("A member to ban");
+      option
+        .setName("member4")
+        .setDescription("A member to which the role should be assigned");
 
       return option;
     })
     .addUserOption((option: SlashCommandUserOption) => {
-      option.setName("member6").setDescription("A member to ban");
+      option
+        .setName("member5")
+        .setDescription("A member to which the role should be assigned");
 
       return option;
     })
     .addUserOption((option: SlashCommandUserOption) => {
-      option.setName("member7").setDescription("A member to ban");
+      option
+        .setName("member6")
+        .setDescription("A member to which the role should be assigned");
 
       return option;
     })
     .addUserOption((option: SlashCommandUserOption) => {
-      option.setName("member8").setDescription("A member to ban");
+      option
+        .setName("member7")
+        .setDescription("A member to which the role should be assigned");
 
       return option;
     })
     .addUserOption((option: SlashCommandUserOption) => {
-      option.setName("member9").setDescription("A member to ban");
+      option
+        .setName("member8")
+        .setDescription("A member to which the role should be assigned");
 
       return option;
     })
     .addUserOption((option: SlashCommandUserOption) => {
-      option.setName("member10").setDescription("A member to ban");
+      option
+        .setName("member9")
+        .setDescription("A member to which the role should be assigned");
 
       return option;
     })
-    .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
+    .addUserOption((option: SlashCommandUserOption) => {
+      option
+        .setName("member10")
+        .setDescription("A member to which the role should be assigned");
+
+      return option;
+    })
+    .setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles),
 
   execute: async function (interaction: Interaction<CacheType>) {
     assert(interaction.isChatInputCommand());
     assert(interaction.guild);
 
+    const role = interaction.options.getRole("role")!.id;
     const members: Array<User> = [];
 
     for (let index = 1; index < 11; index++) {
@@ -93,7 +121,7 @@ const command: ICommand = {
     for (let index = 0; index < members.length; index++) {
       const member = members[index];
       try {
-        await interaction.guild.members.ban(member);
+        await interaction.guild.members.addRole({ role: role, user: member });
         reportText += `${member.tag}: Success\n`;
       } catch (e: any) {
         reportText += `${member.tag}: Failure\n`;
@@ -103,8 +131,10 @@ const command: ICommand = {
 
     const resultEmbed = new EmbedBuilder()
       .setColor("#ffffff")
-      .setTitle("Ban Multiple - Report")
-      .setDescription("Report of attempt to ban the given members.")
+      .setTitle("Assign Role - Report")
+      .setDescription(
+        "Report of attempt to assign the given role to the given members."
+      )
       .addFields({ name: "Members Affected", value: reportText });
 
     try {
