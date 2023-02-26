@@ -17,7 +17,7 @@ const command: ICommand = {
   name: "assigntouser",
   command: new SlashCommandBuilder()
     .setName("assigntouser")
-    .setDescription("Assigns the given user the given roles(s).")
+    .setDescription("Assigns the given user the given role(s).")
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member")
@@ -140,7 +140,7 @@ const command: ICommand = {
       .setDescription(
         `Report of attempt to assign the given user (${member.tag}) the given roles.`
       )
-      .addFields({ name: "Members Affected", value: reportText });
+      .addFields({ name: "Roles Assigned", value: reportText });
 
     try {
       await interaction.reply({ embeds: [resultEmbed], ephemeral: true });

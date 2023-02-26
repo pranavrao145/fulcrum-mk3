@@ -17,9 +17,7 @@ const command: ICommand = {
   name: "removefromuser",
   command: new SlashCommandBuilder()
     .setName("removefromuser")
-    .setDescription(
-      "Removes the given roles(s) from the given the given user ."
-    )
+    .setDescription("Removes the given role(s) from the given the given user .")
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member")
@@ -142,7 +140,7 @@ const command: ICommand = {
       .setDescription(
         `Report of attempt to remove the given roles from the given user (${member.tag}).`
       )
-      .addFields({ name: "Members Affected", value: reportText });
+      .addFields({ name: "Roles Removed", value: reportText });
 
     try {
       await interaction.reply({ embeds: [resultEmbed], ephemeral: true });
