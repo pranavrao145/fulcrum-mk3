@@ -57,19 +57,22 @@ client.on(Discord.Events.ClientReady, async () => {
   deployCommands();
 });
 
-client.on(Discord.Events.InteractionCreate, async (interaction) => {
-  if (!interaction.isChatInputCommand()) return;
+client.on(
+  Discord.Events.InteractionCreate,
+  async (interaction: Discord.Interaction<Discord.CacheType>) => {
+    if (!interaction.isChatInputCommand() || !interaction.inGuild()) return;
 
-  const command = commands.get(interaction.commandName);
+    const command = commands.get(interaction.commandName);
 
-  if (command) {
-    try {
-      await command.execute(interaction);
-    } catch (e: any) {
-      handleError(interaction, e);
+    if (command) {
+      try {
+        await command.execute(interaction);
+      } catch (e: any) {
+        handleError(interaction, e);
+      }
     }
   }
-});
+);
 
 (async () => {
   try {
