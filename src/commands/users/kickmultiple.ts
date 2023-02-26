@@ -16,7 +16,7 @@ const command: ICommand = {
   name: "kickmultiple",
   command: new SlashCommandBuilder()
     .setName("kickmultiple")
-    .setDescription("Kicks up to 10 given users from the server.")
+    .setDescription("Kicks up to 10 given member(s) from the server.")
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member1")
@@ -102,7 +102,7 @@ const command: ICommand = {
     const resultEmbed = new EmbedBuilder()
       .setColor("#ffffff")
       .setTitle("Kick Multiple - Report")
-      .setDescription("Report of attempt to kick the given members.")
+      .setDescription("Report of attempt to kick the given member(s).")
       .addFields({ name: "Members Affected", value: reportText });
 
     try {

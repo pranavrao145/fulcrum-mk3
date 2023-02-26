@@ -16,7 +16,7 @@ const command: ICommand = {
   name: "ban",
   command: new SlashCommandBuilder()
     .setName("ban")
-    .setDescription("Bans the given user from the server.")
+    .setDescription("Bans the given member from the server.")
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member")

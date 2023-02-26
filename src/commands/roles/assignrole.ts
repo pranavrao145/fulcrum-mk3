@@ -17,11 +17,11 @@ const command: ICommand = {
   name: "assignrole",
   command: new SlashCommandBuilder()
     .setName("assignrole")
-    .setDescription("Assigns the given role to the given user(s).")
+    .setDescription("Assigns the given role to the given member(s).")
     .addRoleOption((option: SlashCommandRoleOption) => {
       option
         .setName("role")
-        .setDescription("The role to assign to the given user(s)")
+        .setDescription("The role to assign to the given member(s)")
         .setRequired(true);
 
       return option;
@@ -135,7 +135,7 @@ const command: ICommand = {
       .setColor("#ffffff")
       .setTitle("Assign Role - Report")
       .setDescription(
-        `Report of attempt to assign the given role (${roleResolved.name}) to the given members.`
+        `Report of attempt to assign the given role (${roleResolved.name}) to the given member(s).`
       )
       .addFields({ name: "Members Affected", value: reportText });
 

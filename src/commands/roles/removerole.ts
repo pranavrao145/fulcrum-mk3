@@ -17,11 +17,11 @@ const command: ICommand = {
   name: "removerole",
   command: new SlashCommandBuilder()
     .setName("removerole")
-    .setDescription("Remove the given role from the given user(s).")
+    .setDescription("Remove the given role from the given member(s).")
     .addRoleOption((option: SlashCommandRoleOption) => {
       option
         .setName("role")
-        .setDescription("The role to remove from the given user(s)")
+        .setDescription("The role to remove from the given member(s)")
         .setRequired(true);
 
       return option;

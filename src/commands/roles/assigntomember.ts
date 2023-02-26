@@ -14,15 +14,15 @@ import { handleError } from "../../utils/helpers";
 import { ICommand } from "../../utils/types";
 
 const command: ICommand = {
-  name: "removefromuser",
+  name: "assigntomember",
   command: new SlashCommandBuilder()
-    .setName("removefromuser")
-    .setDescription("Removes the given role(s) from the given the given user .")
+    .setName("assigntomember")
+    .setDescription("Assigns the given member the given role(s).")
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member")
         .setDescription(
-          "The member from which the given role(s) should be removed"
+          "The member to which the given role(s) should be assigned"
         )
         .setRequired(true);
 
@@ -31,7 +31,7 @@ const command: ICommand = {
     .addRoleOption((option: SlashCommandRoleOption) => {
       option
         .setName("role1")
-        .setDescription("A role to be removed from the given user")
+        .setDescription("A role to be assigned to the given member")
         .setRequired(true);
 
       return option;
@@ -39,63 +39,63 @@ const command: ICommand = {
     .addRoleOption((option: SlashCommandRoleOption) => {
       option
         .setName("role2")
-        .setDescription("A role to be removed from the given user");
+        .setDescription("A role to be assigned to the given member");
 
       return option;
     })
     .addRoleOption((option: SlashCommandRoleOption) => {
       option
         .setName("role3")
-        .setDescription("A role to be removed from the given user");
+        .setDescription("A role to be assigned to the given member");
 
       return option;
     })
     .addRoleOption((option: SlashCommandRoleOption) => {
       option
         .setName("role4")
-        .setDescription("A role to be removed from the given user");
+        .setDescription("A role to be assigned to the given member");
 
       return option;
     })
     .addRoleOption((option: SlashCommandRoleOption) => {
       option
         .setName("role5")
-        .setDescription("A role to be removed from the given user");
+        .setDescription("A role to be assigned to the given member");
 
       return option;
     })
     .addRoleOption((option: SlashCommandRoleOption) => {
       option
         .setName("role6")
-        .setDescription("A role to be removed from the given user");
+        .setDescription("A role to be assigned to the given member");
 
       return option;
     })
     .addRoleOption((option: SlashCommandRoleOption) => {
       option
         .setName("role7")
-        .setDescription("A role to be removed from the given user");
+        .setDescription("A role to be assigned to the given member");
 
       return option;
     })
     .addRoleOption((option: SlashCommandRoleOption) => {
       option
         .setName("role8")
-        .setDescription("A role to be removed from the given user");
+        .setDescription("A role to be assigned to the given member");
 
       return option;
     })
     .addRoleOption((option: SlashCommandRoleOption) => {
       option
         .setName("role9")
-        .setDescription("A role to be removed from the given user");
+        .setDescription("A role to be assigned to the given member");
 
       return option;
     })
     .addRoleOption((option: SlashCommandRoleOption) => {
       option
         .setName("role10")
-        .setDescription("A role to be removed from the given user");
+        .setDescription("A role to be assigned to the given member");
 
       return option;
     })
@@ -123,7 +123,7 @@ const command: ICommand = {
       const roleResolved = interaction.guild.roles.resolve(roleId)!;
 
       try {
-        await interaction.guild.members.removeRole({
+        await interaction.guild.members.addRole({
           role: roleResolved,
           user: member,
         });
@@ -136,11 +136,11 @@ const command: ICommand = {
 
     const resultEmbed = new EmbedBuilder()
       .setColor("#ffffff")
-      .setTitle("Remove From User - Report")
+      .setTitle("Assign To User - Report")
       .setDescription(
-        `Report of attempt to remove the given roles from the given user (${member.tag}).`
+        `Report of attempt to assign the given member (${member.tag}) the given role(s).`
       )
-      .addFields({ name: "Roles Removed", value: reportText });
+      .addFields({ name: "Roles Assigned", value: reportText });
 
     try {
       await interaction.reply({ embeds: [resultEmbed], ephemeral: true });

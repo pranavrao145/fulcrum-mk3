@@ -16,7 +16,7 @@ const command: ICommand = {
   name: "banmultiple",
   command: new SlashCommandBuilder()
     .setName("banmultiple")
-    .setDescription("Bans up to 10 given users from the server.")
+    .setDescription("Bans up to 10 given member(s) from the server.")
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member1")
@@ -102,7 +102,7 @@ const command: ICommand = {
     const resultEmbed = new EmbedBuilder()
       .setColor("#ffffff")
       .setTitle("Ban Multiple - Report")
-      .setDescription("Report of attempt to ban the given members.")
+      .setDescription("Report of attempt to ban the given member(s).")
       .addFields({ name: "Members Affected", value: reportText });
 
     try {
