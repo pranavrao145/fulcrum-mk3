@@ -53,7 +53,7 @@ const command: ICommand = {
     const deleteMessageSeconds =
       interaction.options.getInteger("seconds") ?? undefined;
     const reason =
-      interaction.options.getString("reason") ?? "No reason provided";
+      interaction.options.getString("reason") ?? "No reason provided.";
 
     try {
       await interaction.guild.members.ban(user, {
