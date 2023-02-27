@@ -88,8 +88,7 @@ const command: ICommand = {
 
     let reportText = "";
 
-    for (let index = 0; index < roles.length; index++) {
-      const roleId = roles[index];
+    for (const roleId of roles) {
       const roleResolved = interaction.guild.roles.resolve(roleId)!;
 
       try {

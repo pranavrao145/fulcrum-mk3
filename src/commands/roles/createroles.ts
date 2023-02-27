@@ -105,9 +105,7 @@ const command: ICommand = {
 
     let reportText = "";
 
-    for (let index = 0; index < roleNames.length; index++) {
-      const roleName = roleNames[index];
-
+    for (const roleName of roleNames) {
       try {
         const roleResolved = await interaction.guild.roles.create({
           name: roleName,

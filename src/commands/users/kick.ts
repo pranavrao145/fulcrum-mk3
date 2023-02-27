@@ -45,7 +45,7 @@ const command: ICommand = {
       await interaction.guild.members.kick(member, reason);
 
       await interaction.reply({
-        content: `User ${member.tag} successfully kicked for reason: ${reason}`,
+        content: `Member ${member.tag} successfully kicked for reason: ${reason}`,
         ephemeral: true,
       });
     } catch (e: any) {

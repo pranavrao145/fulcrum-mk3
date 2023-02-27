@@ -88,8 +88,7 @@ const command: ICommand = {
 
     let reportText = "";
 
-    for (let index = 0; index < members.length; index++) {
-      const member = members[index];
+    for (const member of members) {
       try {
         await interaction.guild.members.ban(member);
         reportText += `${member.tag}: Success\n`;

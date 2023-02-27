@@ -62,7 +62,7 @@ const command: ICommand = {
       });
 
       await interaction.reply({
-        content: `User ${member.tag} successfully banned for reason: ${reason}`,
+        content: `Member ${member.tag} successfully banned for reason: ${reason}`,
         ephemeral: true,
       });
     } catch (e: any) {
