@@ -5,9 +5,7 @@ import {
   Interaction,
   PermissionFlagsBits,
   SlashCommandBuilder,
-  SlashCommandIntegerOption,
   SlashCommandStringOption,
-  SlashCommandUserOption,
 } from "discord.js";
 
 import { handleError, isValidColor } from "../../utils/helpers";
