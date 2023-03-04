@@ -13,17 +13,17 @@ import {
 
 import { handleError } from "../../utils/helpers";
 import {
-  voicePermissionsDisable,
-  voicePermissionsEnable,
+  textPermissionsDisable,
+  textPermissionsEnable,
 } from "../../utils/information";
 import { ICommand } from "../../utils/types";
 
 const command: ICommand = {
-  name: "changevoicepermissions",
+  name: "changetextpermissions",
   command: new SlashCommandBuilder()
-    .setName("changevoicepermissions")
+    .setName("changetextpermissions")
     .setDescription(
-      "Changes or resets the given role's permissions in a voice channel"
+      "Changes or resets the given role's permissions in a text channel"
     )
     .addSubcommand((command) => {
       command
@@ -35,7 +35,7 @@ const command: ICommand = {
           option
             .setName("channel")
             .setDescription(
-              "The voice channel for which the permissions on the given role should be reset"
+              "The text channel for which the permissions on the given role should be reset"
             )
             .setRequired(true);
 
@@ -45,7 +45,7 @@ const command: ICommand = {
           option
             .setName("role")
             .setDescription(
-              "The role of which permissions should be reset in the given voice channel"
+              "The role of which permissions should be reset in the given text channel"
             )
             .setRequired(true);
 
@@ -58,13 +58,13 @@ const command: ICommand = {
       command
         .setName("alter")
         .setDescription(
-          "Adds or removes specific permissions on the given role in the given voice channel"
+          "Adds or removes specific permissions on the given role in the given text channel"
         )
         .addChannelOption((option: SlashCommandChannelOption) => {
           option
             .setName("channel")
             .setDescription(
-              "The voice channel for which the permissions on the given role should be reset"
+              "The text channel for which the permissions on the given role should be reset"
             )
             .setRequired(true);
 
@@ -74,7 +74,7 @@ const command: ICommand = {
           option
             .setName("role")
             .setDescription(
-              "The role of which permissions should be altered in the given voice channel"
+              "The role of which permissions should be altered in the given text channel"
             )
             .setRequired(true);
 
@@ -102,7 +102,7 @@ const command: ICommand = {
           option
             .setName("permission1")
             .setDescription(
-              "A permission to change on the given role in the given voice channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given text channel (e.g. SEND_MESSAGES)"
             )
             .setRequired(true);
 
@@ -112,7 +112,7 @@ const command: ICommand = {
           option
             .setName("permission2")
             .setDescription(
-              "A permission to change on the given role in the given voice channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given text channel (e.g. SEND_MESSAGES)"
             );
 
           return option;
@@ -121,7 +121,7 @@ const command: ICommand = {
           option
             .setName("permission3")
             .setDescription(
-              "A permission to change on the given role in the given voice channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given text channel (e.g. SEND_MESSAGES)"
             );
 
           return option;
@@ -130,7 +130,7 @@ const command: ICommand = {
           option
             .setName("permission4")
             .setDescription(
-              "A permission to change on the given role in the given voice channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given text channel (e.g. SEND_MESSAGES)"
             );
 
           return option;
@@ -139,7 +139,7 @@ const command: ICommand = {
           option
             .setName("permission5")
             .setDescription(
-              "A permission to change on the given role in the given voice channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given text channel (e.g. SEND_MESSAGES)"
             );
 
           return option;
@@ -148,7 +148,7 @@ const command: ICommand = {
           option
             .setName("permission6")
             .setDescription(
-              "A permission to change on the given role in the given voice channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given text channel (e.g. SEND_MESSAGES)"
             );
           return option;
         })
@@ -156,7 +156,7 @@ const command: ICommand = {
           option
             .setName("permission7")
             .setDescription(
-              "A permission to change on the given role in the given voice channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given text channel (e.g. SEND_MESSAGES)"
             );
 
           return option;
@@ -165,7 +165,7 @@ const command: ICommand = {
           option
             .setName("permission8")
             .setDescription(
-              "A permission to change on the given role in the given voice channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given text channel (e.g. SEND_MESSAGES)"
             );
 
           return option;
@@ -174,7 +174,7 @@ const command: ICommand = {
           option
             .setName("permission9")
             .setDescription(
-              "A permission to change on the given role in the given voice channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given text channel (e.g. SEND_MESSAGES)"
             );
 
           return option;
@@ -183,7 +183,7 @@ const command: ICommand = {
           option
             .setName("permission10")
             .setDescription(
-              "A permission to change on the given role in the given voice channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given text channel (e.g. SEND_MESSAGES)"
             );
 
           return option;
@@ -202,8 +202,8 @@ const command: ICommand = {
     const channelId = interaction.options.getChannel("channel")!.id;
     const channelResolved = interaction.guild.channels.resolve(channelId)!;
 
-    if (channelResolved.type !== ChannelType.GuildVoice) {
-      throw Error("Cannot alter voice permissions on non-voice channel");
+    if (channelResolved.type !== ChannelType.GuildText) {
+      throw Error("Cannot alter text permissions on non-text channel");
     }
 
     switch (interaction.options.getSubcommand()) {
@@ -230,14 +230,14 @@ const command: ICommand = {
               case "add":
                 channelResolved.permissionOverwrites.create(
                   roleResolved,
-                  voicePermissionsEnable.get(permission)!
+                  textPermissionsEnable.get(permission)!
                 );
 
                 break;
               case "remove":
                 channelResolved.permissionOverwrites.create(
                   roleResolved,
-                  voicePermissionsDisable.get(permission)!
+                  textPermissionsDisable.get(permission)!
                 );
                 break;
             }
@@ -250,9 +250,9 @@ const command: ICommand = {
 
         const resultEmbed = new EmbedBuilder()
           .setColor("#ffffff")
-          .setTitle("Alter Voice Permissions - Report")
+          .setTitle("Alter Text Permissions - Report")
           .setDescription(
-            `Report of attempt to alter permissions on the given role (${roleResolved.name}) in the given voice channel (${channelResolved.name}).`
+            `Report of attempt to alter permissions on the given role (${roleResolved.name}) in the given text channel (${channelResolved.name}).`
           )
           .addFields({ name: "Permissions Changed", value: reportText });
 
