@@ -22,3 +22,9 @@ export async function handleError(
 export function isValidColor(colour: string) {
   return /^#([0-9A-F]{3}){1,2}$/i.test(colour);
 }
+
+export function getRandomInteger(start: number, end: number) {
+  start = Math.ceil(start);
+  end = Math.floor(end);
+  return Math.floor(Math.random() * (end - start + 1)) + start;
+}
