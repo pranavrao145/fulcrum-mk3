@@ -58,7 +58,7 @@ const command: ICommand = {
       }
 
       await interaction.reply({
-        content: `Members from channel ${fromResolved} moved to ${toResolved.name} successfully`,
+        content: `Members from channel ${fromResolved.name} moved to ${toResolved.name} successfully`,
         ephemeral: true,
       });
     } catch (e: any) {
