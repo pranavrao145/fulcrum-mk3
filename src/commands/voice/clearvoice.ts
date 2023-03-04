@@ -32,10 +32,10 @@ const command: ICommand = {
     assert(interaction.guild);
 
     const channelId = interaction.options.getChannel("channel")!.id;
-    const channelResolved = interaction.guild.channels.resolve(channelId);
+    const channelResolved = interaction.guild.channels.resolve(channelId)!;
 
     try {
-      if (!channelResolved!.isVoiceBased()) {
+      if (!channelResolved.isVoiceBased()) {
         throw Error("Cannot clear non-voice-based channels.");
       }
 
