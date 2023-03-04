@@ -87,7 +87,7 @@ const command: ICommand = {
       }
 
       await interaction.reply({
-        content: `Channel ${channel.name} successfully created with type ${typeRaw} and privacy ${privacy}.`,
+        content: `Channel ${channel.name} successfully created with type ${typeRaw} and privacy ${privacy}`,
         ephemeral: true,
       });
     } catch (e: any) {

@@ -48,7 +48,7 @@ const command: ICommand = {
       await roleResolved.setName(newName);
 
       await interaction.reply({
-        content: `Role ${oldName} successfully renamed to ${roleResolved.name}.`,
+        content: `Role ${oldName} successfully renamed to ${roleResolved.name}`,
         ephemeral: true,
       });
     } catch (e: any) {

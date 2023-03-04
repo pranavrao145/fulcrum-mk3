@@ -42,7 +42,7 @@ const command: ICommand = {
       await channel.bulkDelete(numMessages);
 
       await interaction.reply({
-        content: `Successfully deleted ${numMessages} most recent messages in the current channel.`,
+        content: `Successfully deleted ${numMessages} most recent messages in the current channel`,
         ephemeral: true,
       });
     } catch (e: any) {

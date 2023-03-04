@@ -62,7 +62,7 @@ const command: ICommand = {
       await roleResolved.setColor(colourResolvable);
 
       await interaction.reply({
-        content: `Colour of role ${roleResolved.name} successfully changed to ${colourResolvable}.`,
+        content: `Colour of role ${roleResolved.name} successfully changed to ${colourResolvable}`,
         ephemeral: true,
       });
     } catch (e: any) {

@@ -5,22 +5,33 @@ import {
   PermissionFlagsBits,
   SlashCommandBuilder,
   SlashCommandChannelOption,
+  SlashCommandUserOption,
 } from "discord.js";
 import { handleError } from "../../utils/helpers";
 
 import { ICommand } from "../../utils/types";
 
 const command: ICommand = {
-  name: "clearvoice",
+  name: "movemember",
   command: new SlashCommandBuilder()
-    .setName("clearvoice")
+    .setName("movemember")
     .setDescription(
-      "Clears the given voice-based channel (i.e. kicks everyone out of the channel)."
+      "Moves the given member from the voice-based channel they are in to the given voice-based channel."
     )
+    .addUserOption((option: SlashCommandUserOption) => {
+      option
+        .setName("member")
+        .setDescription("The member to move")
+        .setRequired(true);
+
+      return option;
+    })
     .addChannelOption((option: SlashCommandChannelOption) => {
       option
         .setName("channel")
-        .setDescription("The voice-based channel to clear")
+        .setDescription(
+          "The voice-based channel to which the given member should be moved"
+        )
         .setRequired(true);
 
       return option;
@@ -31,6 +42,9 @@ const command: ICommand = {
     assert(interaction.isChatInputCommand());
     assert(interaction.guild);
 
+    const memberId = interaction.options.getUser("member")!.id;
+    const memberResolved = interaction.guild.members.resolve(memberId)!;
+
     const channelId = interaction.options.getChannel("channel")!.id;
     const channelResolved = interaction.guild.channels.resolve(channelId);
 
@@ -39,12 +53,10 @@ const command: ICommand = {
         throw Error("Cannot clear non-voice-based channels.");
       }
 
-      for (const member of channelResolved.members.values()) {
-        await member.voice.setChannel(null);
-      }
+      await memberResolved.voice.setChannel(channelResolved);
 
       await interaction.reply({
-        content: `Channel ${channelResolved.name} cleared successfully`,
+        content: `Member ${memberResolved.user.tag} moved to ${channelResolved.name} successfully`,
         ephemeral: true,
       });
     } catch (e: any) {

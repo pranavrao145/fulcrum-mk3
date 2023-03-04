@@ -48,7 +48,7 @@ const command: ICommand = {
       await channelResolved.setName(newName);
 
       await interaction.reply({
-        content: `Channel ${oldName} successfully renamed to ${channelResolved.name}.`,
+        content: `Channel ${oldName} successfully renamed to ${channelResolved.name}`,
         ephemeral: true,
       });
     } catch (e: any) {

@@ -66,7 +66,7 @@ const command: ICommand = {
       await interaction.reply({
         content: `Role ${role.name} successfully created with colour ${
           colourResolvable ?? "no colour provided"
-        }.`,
+        }`,
         ephemeral: true,
       });
     } catch (e: any) {
