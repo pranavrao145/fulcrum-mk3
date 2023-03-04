@@ -1,10 +1,19 @@
 import assert from "assert";
 import {
   CacheType,
+  DMChannel,
   Interaction,
+  NewsChannel,
+  PartialDMChannel,
   PermissionFlagsBits,
+  PrivateThreadChannel,
+  PublicThreadChannel,
   SlashCommandBuilder,
   SlashCommandIntegerOption,
+  StageChannel,
+  TextBasedChannel,
+  TextChannel,
+  VoiceChannel,
 } from "discord.js";
 
 import { handleError } from "../../utils/helpers";
@@ -36,10 +45,16 @@ const command: ICommand = {
     assert(interaction.guild);
 
     const numMessages = interaction.options.getInteger("messages")!;
-    const channel: any = interaction.channel!; // hack
 
     try {
-      await channel.bulkDelete(numMessages);
+      await (
+        interaction.channel as
+          | NewsChannel
+          | TextChannel
+          | PrivateThreadChannel
+          | PublicThreadChannel
+          | VoiceChannel
+      ).bulkDelete(numMessages);
 
       await interaction.reply({
         content: `Successfully deleted ${numMessages} most recent messages in the current channel`,
