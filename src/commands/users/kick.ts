@@ -27,7 +27,7 @@ const command: ICommand = {
     .addStringOption((option: SlashCommandStringOption) => {
       option
         .setName("reason")
-        .setDescription("The reason for the kick")
+        .setDescription("The reason for the kick (default none)")
         .setMaxLength(512);
       return option;
     })

@@ -21,7 +21,7 @@ const command: ICommand = {
       option
         .setName("messages")
         .setDescription(
-          "Number of messages to delete, must be between 2 and 100, inclusive."
+          "Number of messages to delete, must be between 2 and 100, inclusive"
         )
         .setMinValue(2)
         .setMaxValue(100)

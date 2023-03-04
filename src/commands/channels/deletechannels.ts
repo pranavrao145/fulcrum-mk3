@@ -1,8 +1,6 @@
 import assert from "assert";
 import {
   CacheType,
-  ChannelResolvable,
-  ChannelType,
   EmbedBuilder,
   GuildChannelResolvable,
   Interaction,

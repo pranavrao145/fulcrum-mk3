@@ -29,7 +29,7 @@ const command: ICommand = {
       option
         .setName("seconds")
         .setDescription(
-          "Number of seconds of messages to delete, must be between 0 and 604800 (7 days), inclusive"
+          "Number of seconds of messages to delete, between 0 and 604800 (7 days), inclusive (default 0)"
         )
         .setMinValue(0)
         .setMaxValue(604800);
@@ -39,7 +39,7 @@ const command: ICommand = {
     .addStringOption((option: SlashCommandStringOption) => {
       option
         .setName("reason")
-        .setDescription("The reason for the ban")
+        .setDescription("The reason for the ban (default none)")
         .setMaxLength(512);
       return option;
     })
@@ -51,7 +51,7 @@ const command: ICommand = {
 
     const member = interaction.options.getUser("member")!;
     const deleteMessageSeconds =
-      interaction.options.getInteger("seconds") ?? undefined;
+      interaction.options.getInteger("seconds") ?? 0;
     const reason =
       interaction.options.getString("reason") ?? "No reason provided.";
 

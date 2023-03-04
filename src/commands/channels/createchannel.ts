@@ -15,9 +15,7 @@ const command: ICommand = {
   name: "createchannel",
   command: new SlashCommandBuilder()
     .setName("createchannel")
-    .setDescription(
-      "Creates a channel with the given name, given type (def. text), and given privacy (def. public)."
-    )
+    .setDescription("Creates a channel with the given name, type, and privacy.")
     .addStringOption((option: SlashCommandStringOption) => {
       option
         .setName("name")
@@ -29,7 +27,7 @@ const command: ICommand = {
     .addStringOption((option: SlashCommandStringOption) => {
       option
         .setName("type")
-        .setDescription("The type of the new channel")
+        .setDescription("The type of the new channel (default text)")
         .setChoices(
           {
             name: "text",
@@ -46,7 +44,7 @@ const command: ICommand = {
     .addStringOption((option: SlashCommandStringOption) => {
       option
         .setName("privacy")
-        .setDescription("The privacy of the new channel")
+        .setDescription("The privacy of the new channel (default public)")
         .setChoices(
           {
             name: "public",

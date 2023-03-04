@@ -26,7 +26,7 @@ const command: ICommand = {
     .addStringOption((option: SlashCommandStringOption) => {
       option
         .setName("reason")
-        .setDescription("The reason for to unban")
+        .setDescription("The reason for to unban (default none)")
         .setMaxLength(512);
       return option;
     })
