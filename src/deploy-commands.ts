@@ -19,21 +19,21 @@ const deployCommands = async () => {
   }
 
   const rest = new REST({ version: "10" }).setToken(
-    process.env.FULCRUM_BOT_TOKEN!
+    process.env.FULCRUM_BOT_TOKEN!,
   );
 
   try {
     console.log(
-      `Started refreshing ${commands.length} application (/) commands.`
+      `Started refreshing ${commands.length} application (/) commands.`,
     );
 
     const data: any = await rest.put(
       Routes.applicationCommands(process.env.FULCRUM_CLIENT_ID!),
-      { body: commands }
+      { body: commands },
     );
 
     console.log(
-      `Successfully reloaded ${data.length} application (/) commands.`
+      `Successfully reloaded ${data.length} application (/) commands.`,
     );
   } catch (error) {
     console.error(error);

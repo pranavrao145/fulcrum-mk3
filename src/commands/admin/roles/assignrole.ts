@@ -134,7 +134,7 @@ const command: ICommand = {
       .setColor("#ffffff")
       .setTitle("Assign Role - Report")
       .setDescription(
-        `Report of attempt to assign the given role (${roleResolved.name}) to the given member(s).`
+        `Report of attempt to assign the given role (${roleResolved.name}) to the given member(s).`,
       )
       .addFields({ name: "Members Affected", value: reportText });
 
