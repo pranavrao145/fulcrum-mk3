@@ -28,7 +28,9 @@ const command: ICommand = {
     .addStringOption((option: SlashCommandStringOption) => {
       option
         .setName("colour")
-        .setDescription("The colour code of the new role (with no hashtag) (default none)")
+        .setDescription(
+          "The colour code of the new role (with no hashtag) (default none)",
+        )
         .setMinLength(6)
         .setMaxLength(6);
 

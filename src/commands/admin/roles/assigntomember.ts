@@ -22,7 +22,7 @@ const command: ICommand = {
       option
         .setName("member")
         .setDescription(
-          "The member to which the given role(s) should be assigned"
+          "The member to which the given role(s) should be assigned",
         )
         .setRequired(true);
 
@@ -137,7 +137,7 @@ const command: ICommand = {
       .setColor("#ffffff")
       .setTitle("Assign To Member - Report")
       .setDescription(
-        `Report of attempt to assign the given member (${member.tag}) the given role(s).`
+        `Report of attempt to assign the given member (${member.tag}) the given role(s).`,
       )
       .addFields({ name: "Roles Assigned", value: reportText });
 

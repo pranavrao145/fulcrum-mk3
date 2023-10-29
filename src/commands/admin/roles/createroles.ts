@@ -121,7 +121,7 @@ const command: ICommand = {
       .setColor("#ffffff")
       .setTitle("Create Roles - Report")
       .setDescription(
-        `Report of attempt to create new role(s) with the given name(s).`
+        `Report of attempt to create new role(s) with the given name(s).`,
       )
       .addFields({ name: "Roles Created", value: reportText });
 

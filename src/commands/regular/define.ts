@@ -38,7 +38,7 @@ const command: ICommand = {
     try {
       try {
         const response = await axios.get(
-          `https://api.dictionaryapi.dev/api/v2/entries/en_US/${word}`
+          `https://api.dictionaryapi.dev/api/v2/entries/en_US/${word}`,
         );
 
         const meanings = response.data[0]["meanings"];

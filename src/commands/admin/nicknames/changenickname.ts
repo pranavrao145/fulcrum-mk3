@@ -16,7 +16,7 @@ const command: ICommand = {
   command: new SlashCommandBuilder()
     .setName("changenickname")
     .setDescription(
-      "Changes the nickname of the given member to the name given."
+      "Changes the nickname of the given member to the name given.",
     )
     .addUserOption((option: SlashCommandUserOption) => {
       option

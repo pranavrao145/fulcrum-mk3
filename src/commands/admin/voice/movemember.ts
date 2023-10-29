@@ -16,7 +16,7 @@ const command: ICommand = {
   command: new SlashCommandBuilder()
     .setName("movemember")
     .setDescription(
-      "Moves the given member from the voice-based channel they are in to the given voice-based channel."
+      "Moves the given member from the voice-based channel they are in to the given voice-based channel.",
     )
     .addUserOption((option: SlashCommandUserOption) => {
       option
@@ -30,7 +30,7 @@ const command: ICommand = {
       option
         .setName("channel")
         .setDescription(
-          "The voice-based channel to which the given member should be moved"
+          "The voice-based channel to which the given member should be moved",
         )
         .setRequired(true);
 

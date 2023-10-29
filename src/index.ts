@@ -71,7 +71,7 @@ client.on(
         handleError(interaction, e);
       }
     }
-  }
+  },
 );
 
 (async () => {

@@ -7,9 +7,8 @@ import {
 
 export interface ICommand {
   name: string;
-  command:|Omit<SlashCommandBuilder, "addSubcommand"|"addSubcommandGroup">|
-      SlashCommandSubcommandsOnlyBuilder;
+  command:
+    | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">
+    | SlashCommandSubcommandsOnlyBuilder;
   execute(interaction: Interaction<CacheType>): any;
 }
-
-

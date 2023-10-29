@@ -17,13 +17,13 @@ const command: ICommand = {
   command: new SlashCommandBuilder()
     .setName("translate")
     .setDescription(
-      "Translates the given phrase into the given language. The language the phrase is in is auto-detected."
+      "Translates the given phrase into the given language. The language the phrase is in is auto-detected.",
     )
     .addStringOption((option: SlashCommandStringOption) => {
       option
         .setName("language")
         .setDescription(
-          "The two letter code (e.g. es or fr) of the language to which to translate"
+          "The two letter code (e.g. es or fr) of the language to which to translate",
         )
         .setRequired(true);
 

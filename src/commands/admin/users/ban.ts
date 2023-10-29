@@ -29,7 +29,7 @@ const command: ICommand = {
       option
         .setName("seconds")
         .setDescription(
-          "Number of seconds of messages to delete, between 0 and 604800 (7 days), inclusive (default 0)"
+          "Number of seconds of messages to delete, between 0 and 604800 (7 days), inclusive (default 0)",
         )
         .setMinValue(0)
         .setMaxValue(604800);
@@ -50,8 +50,7 @@ const command: ICommand = {
     assert(interaction.guild);
 
     const member = interaction.options.getUser("member")!;
-    const deleteMessageSeconds =
-      interaction.options.getInteger("seconds") ?? 0;
+    const deleteMessageSeconds = interaction.options.getInteger("seconds") ?? 0;
     const reason =
       interaction.options.getString("reason") ?? "No reason provided.";
 

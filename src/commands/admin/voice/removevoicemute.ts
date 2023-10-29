@@ -15,7 +15,7 @@ const command: ICommand = {
   command: new SlashCommandBuilder()
     .setName("removevoicemute")
     .setDescription(
-      "Removes mutes from all members in the given voice-based channel."
+      "Removes mutes from all members in the given voice-based channel.",
     )
     .addChannelOption((option: SlashCommandChannelOption) => {
       option

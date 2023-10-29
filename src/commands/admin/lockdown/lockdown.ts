@@ -15,13 +15,13 @@ const command: ICommand = {
   command: new SlashCommandBuilder()
     .setName("lockdown")
     .setDescription(
-      "Locks all channels (including voice-based channels) in the server, optionally deleting all invites."
+      "Locks all channels (including voice-based channels) in the server, optionally deleting all invites.",
     )
     .addBooleanOption((option: SlashCommandBooleanOption) => {
       option
         .setName("delete")
         .setDescription(
-          "Whether or not to delete all server invites (default false)"
+          "Whether or not to delete all server invites (default false)",
         );
 
       return option;
@@ -50,7 +50,7 @@ const command: ICommand = {
           interaction.guild.roles.everyone,
           {
             SendMessages: false,
-          }
+          },
         );
       }
 
@@ -59,7 +59,7 @@ const command: ICommand = {
           interaction.guild.roles.everyone,
           {
             Connect: false,
-          }
+          },
         );
       }
 

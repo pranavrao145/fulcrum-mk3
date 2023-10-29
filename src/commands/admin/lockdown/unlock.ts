@@ -18,7 +18,7 @@ const command: ICommand = {
   command: new SlashCommandBuilder()
     .setName("unlock")
     .setDescription(
-      "Unlocks the current channel, making it read and write for the @everyone role, as it is by default."
+      "Unlocks the current channel, making it read and write for the @everyone role, as it is by default.",
     )
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels),
 

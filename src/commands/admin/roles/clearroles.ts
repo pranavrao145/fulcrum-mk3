@@ -17,7 +17,7 @@ const command: ICommand = {
   command: new SlashCommandBuilder()
     .setName("clearroles")
     .setDescription(
-      "Removes the given role(s) from every member that has them."
+      "Removes the given role(s) from every member that has them.",
     )
     .addRoleOption((option: SlashCommandRoleOption) => {
       option

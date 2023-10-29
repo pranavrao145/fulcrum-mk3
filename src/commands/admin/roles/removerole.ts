@@ -134,7 +134,7 @@ const command: ICommand = {
       .setColor("#ffffff")
       .setTitle("Remove Role - Report")
       .setDescription(
-        `Report of attempt to remove the given role (${roleResolved.name}) from the given members.`
+        `Report of attempt to remove the given role (${roleResolved.name}) from the given members.`,
       )
       .addFields({ name: "Members Affected", value: reportText });
 

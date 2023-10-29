@@ -14,7 +14,7 @@ const command: ICommand = {
   command: new SlashCommandBuilder()
     .setName("unlockdown")
     .setDescription(
-      "Unlocks all channels (including voice-based channels) in the server."
+      "Unlocks all channels (including voice-based channels) in the server.",
     )
     .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
@@ -38,7 +38,7 @@ const command: ICommand = {
           interaction.guild.roles.everyone,
           {
             SendMessages: null,
-          }
+          },
         );
       }
 
@@ -47,7 +47,7 @@ const command: ICommand = {
           interaction.guild.roles.everyone,
           {
             Connect: null,
-          }
+          },
         );
       }
 

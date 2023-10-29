@@ -17,7 +17,7 @@ const command: ICommand = {
   command: new SlashCommandBuilder()
     .setName("changegeneralpermissions")
     .setDescription(
-      "Changes or resets the given role's permissions on the server"
+      "Changes or resets the given role's permissions on the server",
     )
     .addSubcommand((command) => {
       command
@@ -58,7 +58,7 @@ const command: ICommand = {
               {
                 name: "remove",
                 value: "remove",
-              }
+              },
             )
             .setRequired(true);
 
@@ -68,7 +68,7 @@ const command: ICommand = {
           option
             .setName("permission1")
             .setDescription(
-              "A permission to change on the given role (e.g. SEND_MESSAGES)"
+              "A permission to change on the given role (e.g. SEND_MESSAGES)",
             )
             .setRequired(true);
 
@@ -78,7 +78,7 @@ const command: ICommand = {
           option
             .setName("permission2")
             .setDescription(
-              "A permission to change on the given role (e.g. SEND_MESSAGES)"
+              "A permission to change on the given role (e.g. SEND_MESSAGES)",
             );
 
           return option;
@@ -87,7 +87,7 @@ const command: ICommand = {
           option
             .setName("permission3")
             .setDescription(
-              "A permission to change on the given role (e.g. SEND_MESSAGES)"
+              "A permission to change on the given role (e.g. SEND_MESSAGES)",
             );
 
           return option;
@@ -96,7 +96,7 @@ const command: ICommand = {
           option
             .setName("permission4")
             .setDescription(
-              "A permission to change on the given role (e.g. SEND_MESSAGES)"
+              "A permission to change on the given role (e.g. SEND_MESSAGES)",
             );
 
           return option;
@@ -105,7 +105,7 @@ const command: ICommand = {
           option
             .setName("permission5")
             .setDescription(
-              "A permission to change on the given role (e.g. SEND_MESSAGES)"
+              "A permission to change on the given role (e.g. SEND_MESSAGES)",
             );
 
           return option;
@@ -114,7 +114,7 @@ const command: ICommand = {
           option
             .setName("permission6")
             .setDescription(
-              "A permission to change on the given role (e.g. SEND_MESSAGES)"
+              "A permission to change on the given role (e.g. SEND_MESSAGES)",
             );
           return option;
         })
@@ -122,7 +122,7 @@ const command: ICommand = {
           option
             .setName("permission7")
             .setDescription(
-              "A permission to change on the given role (e.g. SEND_MESSAGES)"
+              "A permission to change on the given role (e.g. SEND_MESSAGES)",
             );
 
           return option;
@@ -131,7 +131,7 @@ const command: ICommand = {
           option
             .setName("permission8")
             .setDescription(
-              "A permission to change on the given role (e.g. SEND_MESSAGES)"
+              "A permission to change on the given role (e.g. SEND_MESSAGES)",
             );
 
           return option;
@@ -140,7 +140,7 @@ const command: ICommand = {
           option
             .setName("permission9")
             .setDescription(
-              "A permission to change on the given role (e.g. SEND_MESSAGES)"
+              "A permission to change on the given role (e.g. SEND_MESSAGES)",
             );
 
           return option;
@@ -149,7 +149,7 @@ const command: ICommand = {
           option
             .setName("permission10")
             .setDescription(
-              "A permission to change on the given role (e.g. SEND_MESSAGES)"
+              "A permission to change on the given role (e.g. SEND_MESSAGES)",
             );
 
           return option;
@@ -173,7 +173,7 @@ const command: ICommand = {
 
         for (let index = 1; index < 11; index++) {
           const permission = interaction.options.getString(
-            "permission" + index
+            "permission" + index,
           );
 
           if (permission) {
@@ -209,7 +209,7 @@ const command: ICommand = {
           .setColor("#ffffff")
           .setTitle("Alter General Permissions - Report")
           .setDescription(
-            `Report of attempt to alter permissions on the given role (${roleResolved.name}).`
+            `Report of attempt to alter permissions on the given role (${roleResolved.name}).`,
           )
           .addFields({ name: "Permissions Changed", value: reportText });
 

@@ -36,7 +36,7 @@ const command: ICommand = {
           {
             name: "voice",
             value: "voice",
-          }
+          },
         );
 
       return option;
@@ -53,7 +53,7 @@ const command: ICommand = {
           {
             name: "private",
             value: "private",
-          }
+          },
         );
 
       return option;

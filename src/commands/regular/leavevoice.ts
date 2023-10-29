@@ -9,7 +9,7 @@ const command: ICommand = {
   command: new SlashCommandBuilder()
     .setName("leavevoice")
     .setDescription(
-      "Disconnects the member form the voice channel they are currently in."
+      "Disconnects the member form the voice channel they are currently in.",
     ),
 
   execute: async function (interaction: Interaction<CacheType>) {

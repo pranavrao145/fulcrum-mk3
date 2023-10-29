@@ -23,19 +23,19 @@ const command: ICommand = {
   command: new SlashCommandBuilder()
     .setName("changestagepermissions")
     .setDescription(
-      "Changes or resets the given role's permissions in a stage channel"
+      "Changes or resets the given role's permissions in a stage channel",
     )
     .addSubcommand((command) => {
       command
         .setName("reset")
         .setDescription(
-          "Resets the permissions on the given role in the given channel"
+          "Resets the permissions on the given role in the given channel",
         )
         .addChannelOption((option: SlashCommandChannelOption) => {
           option
             .setName("channel")
             .setDescription(
-              "The stage channel for which the permissions on the given role should be reset"
+              "The stage channel for which the permissions on the given role should be reset",
             )
             .setRequired(true);
 
@@ -45,7 +45,7 @@ const command: ICommand = {
           option
             .setName("role")
             .setDescription(
-              "The role of which permissions should be reset in the given stage channel"
+              "The role of which permissions should be reset in the given stage channel",
             )
             .setRequired(true);
 
@@ -58,13 +58,13 @@ const command: ICommand = {
       command
         .setName("alter")
         .setDescription(
-          "Adds or removes specific permissions on the given role in the given stage channel"
+          "Adds or removes specific permissions on the given role in the given stage channel",
         )
         .addChannelOption((option: SlashCommandChannelOption) => {
           option
             .setName("channel")
             .setDescription(
-              "The stage channel for which the permissions on the given role should be reset"
+              "The stage channel for which the permissions on the given role should be reset",
             )
             .setRequired(true);
 
@@ -74,7 +74,7 @@ const command: ICommand = {
           option
             .setName("role")
             .setDescription(
-              "The role of which permissions should be altered in the given stage channel"
+              "The role of which permissions should be altered in the given stage channel",
             )
             .setRequired(true);
 
@@ -92,7 +92,7 @@ const command: ICommand = {
               {
                 name: "remove",
                 value: "remove",
-              }
+              },
             )
             .setRequired(true);
 
@@ -102,7 +102,7 @@ const command: ICommand = {
           option
             .setName("permission1")
             .setDescription(
-              "A permission to change on the given role in the given stage channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given stage channel (e.g. CONNECT)",
             )
             .setRequired(true);
 
@@ -112,7 +112,7 @@ const command: ICommand = {
           option
             .setName("permission2")
             .setDescription(
-              "A permission to change on the given role in the given stage channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given stage channel (e.g. CONNECT)",
             );
 
           return option;
@@ -121,7 +121,7 @@ const command: ICommand = {
           option
             .setName("permission3")
             .setDescription(
-              "A permission to change on the given role in the given stage channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given stage channel (e.g. CONNECT)",
             );
 
           return option;
@@ -130,7 +130,7 @@ const command: ICommand = {
           option
             .setName("permission4")
             .setDescription(
-              "A permission to change on the given role in the given stage channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given stage channel (e.g. CONNECT)",
             );
 
           return option;
@@ -139,7 +139,7 @@ const command: ICommand = {
           option
             .setName("permission5")
             .setDescription(
-              "A permission to change on the given role in the given stage channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given stage channel (e.g. CONNECT)",
             );
 
           return option;
@@ -148,7 +148,7 @@ const command: ICommand = {
           option
             .setName("permission6")
             .setDescription(
-              "A permission to change on the given role in the given stage channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given stage channel (e.g. CONNECT)",
             );
           return option;
         })
@@ -156,7 +156,7 @@ const command: ICommand = {
           option
             .setName("permission7")
             .setDescription(
-              "A permission to change on the given role in the given stage channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given stage channel (e.g. CONNECT)",
             );
 
           return option;
@@ -165,7 +165,7 @@ const command: ICommand = {
           option
             .setName("permission8")
             .setDescription(
-              "A permission to change on the given role in the given stage channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given stage channel (e.g. CONNECT)",
             );
 
           return option;
@@ -174,7 +174,7 @@ const command: ICommand = {
           option
             .setName("permission9")
             .setDescription(
-              "A permission to change on the given role in the given stage channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given stage channel (e.g. CONNECT)",
             );
 
           return option;
@@ -183,7 +183,7 @@ const command: ICommand = {
           option
             .setName("permission10")
             .setDescription(
-              "A permission to change on the given role in the given stage channel (e.g. CONNECT)"
+              "A permission to change on the given role in the given stage channel (e.g. CONNECT)",
             );
 
           return option;
@@ -214,7 +214,7 @@ const command: ICommand = {
 
         for (let index = 1; index < 11; index++) {
           const permission = interaction.options.getString(
-            "permission" + index
+            "permission" + index,
           );
 
           if (permission) {
@@ -230,14 +230,14 @@ const command: ICommand = {
               case "add":
                 channelResolved.permissionOverwrites.create(
                   roleResolved,
-                  stagePermissionsEnable.get(permission)!
+                  stagePermissionsEnable.get(permission)!,
                 );
 
                 break;
               case "remove":
                 channelResolved.permissionOverwrites.create(
                   roleResolved,
-                  stagePermissionsDisable.get(permission)!
+                  stagePermissionsDisable.get(permission)!,
                 );
                 break;
             }
@@ -252,7 +252,7 @@ const command: ICommand = {
           .setColor("#ffffff")
           .setTitle("Alter Stage Permissions - Report")
           .setDescription(
-            `Report of attempt to alter permissions on the given role (${roleResolved.name}) in the given stage channel (${channelResolved.name}).`
+            `Report of attempt to alter permissions on the given role (${roleResolved.name}) in the given stage channel (${channelResolved.name}).`,
           )
           .addFields({ name: "Permissions Changed", value: reportText });
 

@@ -15,7 +15,7 @@ const command: ICommand = {
   command: new SlashCommandBuilder()
     .setName("clearvoice")
     .setDescription(
-      "Clears the given voice-based channel (i.e. kicks everyone out of the channel)."
+      "Clears the given voice-based channel (i.e. kicks everyone out of the channel).",
     )
     .addChannelOption((option: SlashCommandChannelOption) => {
       option

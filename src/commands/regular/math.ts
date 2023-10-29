@@ -1,5 +1,4 @@
 import assert from "assert";
-import axios from "axios";
 import {
   CacheType,
   EmbedBuilder,

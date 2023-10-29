@@ -2,7 +2,7 @@ import { CacheType, ChatInputCommandInteraction } from "discord.js";
 
 export async function handleError(
   interaction: ChatInputCommandInteraction<CacheType>,
-  err: any
+  err: any,
 ) {
   if (interaction.replied || interaction.deferred) {
     await interaction.followUp({

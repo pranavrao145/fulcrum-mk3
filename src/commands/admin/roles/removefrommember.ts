@@ -18,13 +18,13 @@ const command: ICommand = {
   command: new SlashCommandBuilder()
     .setName("removefromuser")
     .setDescription(
-      "Removes the given role(s) from the given the given member ."
+      "Removes the given role(s) from the given the given member .",
     )
     .addUserOption((option: SlashCommandUserOption) => {
       option
         .setName("member")
         .setDescription(
-          "The member from which the given role(s) should be removed"
+          "The member from which the given role(s) should be removed",
         )
         .setRequired(true);
 
@@ -139,7 +139,7 @@ const command: ICommand = {
       .setColor("#ffffff")
       .setTitle("Remove From Member - Report")
       .setDescription(
-        `Report of attempt to remove the given roles from the given member (${member.tag}).`
+        `Report of attempt to remove the given roles from the given member (${member.tag}).`,
       )
       .addFields({ name: "Roles Removed", value: reportText });
 

@@ -16,7 +16,7 @@ const command: ICommand = {
   command: new SlashCommandBuilder()
     .setName("randomnumber")
     .setDescription(
-      "Provide a random number within the given range (inclusive)."
+      "Provide a random number within the given range (inclusive).",
     )
     .addIntegerOption((option: SlashCommandIntegerOption) => {
       option
