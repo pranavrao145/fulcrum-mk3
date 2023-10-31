@@ -16,7 +16,7 @@ import { ICommand } from "../../../utils/types";
 const command: ICommand = {
   name: "removefrommember",
   command: new SlashCommandBuilder()
-    .setName("removefromuser")
+    .setName("removefrommember")
     .setDescription(
       "Removes the given role(s) from the given the given member .",
     )
